@@ -1,3 +1,5 @@
+
+
 <div id="product-variant-specs" class="col-md-6">
 <h6 class="product-section-title">Specs</h6>
 <div class="table-responsive">
@@ -10,7 +12,9 @@
       <% end %>
     </tr>
   </thead>
-  <tbody>    
+  
+  <tbody>
+    <tr> 
       <td width="70px"><small><b>Rope Diameter:</b></small></td>
       <% @product.variants.each do |variant| %>
       <td><small><%= variant.rope_diameter ? "#{variant.rope_diameter} mm" : "-" %><small></td>
