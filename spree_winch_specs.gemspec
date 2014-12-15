@@ -3,8 +3,8 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_winch_specs'
   s.version     = '2.2.0'
-  s.summary     = 'TODO: Add gem summary here'
-  s.description = 'TODO: Add (optional) gem description here'
+  s.summary     = 'Adds extra variants to orplex stores'
+  s.description = 'Adds extra variants to orplex stores'
   s.required_ruby_version = '>= 1.9.3'
 
   s.author    = 'lerkens'
