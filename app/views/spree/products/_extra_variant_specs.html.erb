@@ -15,7 +15,7 @@
   
   <tbody>
     <tr> 
-      <td width="70px"><small><b>Rope Diameter:</b></small></td>
+      <td><small><b>Rope Diameter:</b></small></td>
       <% @product.variants.each do |variant| %>
       <td><small><%= variant.rope_diameter ? "#{variant.rope_diameter} mm" : "-" %><small></td>
       <% end %>
