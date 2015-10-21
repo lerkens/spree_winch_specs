@@ -13,6 +13,22 @@
   
       <tbody>
         <tr> 
+          <td><small><b>Product Dimensions:</b></small></td>
+          <% @product.variants.each do |variant| %>
+          <td>
+            <small><%= variant.height || "-" %> x <small>
+            <small><%= variant.width  || "-" %> x <small>
+            <small><%= variant.depth  || "-" %> mm<small>
+            </td>
+          <% end %>
+        </tr>
+        <tr> 
+          <td><small><b>Pulley Diameter:</b></small></td>
+          <% @product.variants.each do |variant| %>
+          <td><small><%= variant.pulley_diameter ? "#{variant.pulley_diameter} mm" : "-" %><small></td>
+          <% end %>
+        </tr>
+        <tr> 
           <td><small><b>Pulley Diameter:</b></small></td>
           <% @product.variants.each do |variant| %>
           <td><small><%= variant.pulley_diameter ? "#{variant.pulley_diameter} mm" : "-" %><small></td>
