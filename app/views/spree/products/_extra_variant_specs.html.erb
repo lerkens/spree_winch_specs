@@ -95,14 +95,22 @@
             <td><small><%= variant.ratio || "" %><small></td>
             <% end %>
           </tr>
-
+          
           <tr>
             <td><small><b>Required Effort:</b></small></td>
             <% @product.variants.each do |variant| %>
-      	  <td><small><%= variant.required_effort ? "#{variant.required_effort} N" : "" %><small></td>
+      	    <td><small><%= variant.required_effort ? "#{variant.required_effort} N" : "" %><small></td>
 		  
             <% end %>
           </tr> 
+          
+          <tr>
+            <td><small><b>Haulage Capacity:</b></small></td>
+            <% @product.variants.each do |variant| %>
+      	    <td><small><%= variant.haulage_capacity ? "#{variant.haulage_capacity} Kg" : "" %><small></td>
+            <% end %>
+          </tr>
+          
           <tr>
             <td><small><b>Price:</b></small></td>
             <% @product.variants.each do |variant| %>
