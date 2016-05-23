@@ -16,58 +16,26 @@
       </thead>
   
       <tbody>
-        <tr> 
-          <td><small><b>Product Dimensions:</b></small></td>
-          <% @product.variants.each do |variant| %>
-            <td>
-              <small>
-                <%= variant.height ? "#{variant.width.to_i} x" : "" %>
-                <%= variant.width ? "#{variant.width.to_i} x" : "" %>
-                <%= variant.depth ? "#{variant.depth.to_i} mm" : "" %>
-              </small>
-            </td>
-          <% end %>
-        </tr>
-        <tr>
-          <td><small><b>Weight:</b></small></td>
-            <% @product.variants.each do |variant| %>
-            <td>
-              <small><%= variant.weight ? "#{variant.weight} Kg" : "" %></small>
-            </td>
-          <% end %>
-        </tr>
+
+        <!-- Only display for pulleys -->
         <% unless @product.variants.first.pulley_diameter.blank? %>
-        <tr> 
-          <td><small><b>Pulley Diameter:</b></small></td>
-          <% @product.variants.each do |variant| %>
-          <td><small><%= variant.pulley_diameter.blank? ? "" : "#{variant.pulley_diameter} mm" %><small></td>
-          <% end %>
-        </tr>
-        <% end %>  
-        <tr> 
-          <td><small><b>Rope Diameter:</b></small></td>
-          <% @product.variants.each do |variant| %>
-          <td><small><%= variant.rope_diameter ? "#{variant.rope_diameter} mm" : "" %><small></td>
-          <% end %>
-        </tr>
-        
-        <!-- Winch only fields -->
-        
-        <% if @product.variants.first.pulley_diameter.blank? %>
-          <tr>
-            <td><small><b>Lifting Capacity 1st Layer:</b></small></td>
+          <tr> 
+            <td><small><b>Pulley Diameter:</b></small></td>
             <% @product.variants.each do |variant| %>
-            <td><small><%= variant.lifting_capacity_first_layer ? "#{variant.lifting_capacity_first_layer} Kg" : "" %><small></td>
+            <td><small><%= variant.pulley_diameter.blank? ? "" : "#{variant.pulley_diameter} mm" %><small></td>
             <% end %>
           </tr>
-
-          <tr>
-            <td><small><b>Lifting Capacity Last Layer:</b></small></td>
+        
+          <tr> 
+            <td><small><b>Rope Diameter:</b></small></td>
             <% @product.variants.each do |variant| %>
-            <td><small><%= variant.lifting_capacity_last_layer ? "#{variant.lifting_capacity_last_layer} Kg" : "" %><small></td>
+            <td><small><%= variant.rope_diameter ? "#{variant.rope_diameter} mm" : "" %><small></td>
             <% end %>
           </tr>
-
+        
+          <!-- Only display for winches -->
+          <% else %>  
+        
           <tr>
             <td><small><b>Rope Capacity 1st Layer:</b></small></td>
             <% @product.variants.each do |variant| %>
@@ -81,43 +49,64 @@
             <td><small><%= variant.rope_capacity_total ? "#{variant.rope_capacity_total} m" : "" %><small></td>
             <% end %>
           </tr>
-
+        
+          <tr> 
+            <td><small><b>Rope Diameter:</b></small></td>
+            <% @product.variants.each do |variant| %>
+            <td><small><%= variant.rope_diameter ? "#{variant.rope_diameter} mm" : "" %><small></td>
+            <% end %>
+          </tr>
+        
           <tr>
             <td><small><b>No. of Layers:</b></small></td>
             <% @product.variants.each do |variant| %>
             <td><small><%= variant.number_of_layers || "" %><small></td>
             <% end %>
           </tr>
-    
+        
           <tr>
             <td><small><b>Ratio:</b></small></td>
             <% @product.variants.each do |variant| %>
             <td><small><%= variant.ratio || "" %><small></td>
             <% end %>
           </tr>
-          
+        
           <tr>
             <td><small><b>Required Effort:</b></small></td>
             <% @product.variants.each do |variant| %>
       	    <td><small><%= variant.required_effort ? "#{variant.required_effort} N" : "" %><small></td>
-		  
-            <% end %>
-          </tr> 
-          
-          <tr>
-            <td><small><b>Haulage Capacity:</b></small></td>
-            <% @product.variants.each do |variant| %>
-      	    <td><small><%= variant.haulage_capacity ? "#{variant.haulage_capacity} Kg" : "" %><small></td>
+	  
             <% end %>
           </tr>
-          
-          <tr>
-            <td><small><b>Price:</b></small></td>
+        <% end %> 
+        
+        <!--Display for everything -->       
+        <tr>
+          <td><small><b>Weight:</b></small></td>
             <% @product.variants.each do |variant| %>
-            <td><small><b><%= variant.price ? number_to_currency(variant.price, :unit => '£') : "" %></b></small></td>
-            <% end %>
-          </tr>
-        <% end %>    
+            <td>
+              <small><%= variant.weight ? "#{variant.weight} Kg" : "" %></small>
+            </td>
+          <% end %>
+        </tr>
+        <tr> 
+          <td><small><b>Product Dimensions:</b></small></td>
+          <% @product.variants.each do |variant| %>
+            <td>
+              <small>
+                <%= variant.height ? "#{variant.width.to_i} x" : "" %>
+                <%= variant.width ? "#{variant.width.to_i} x" : "" %>
+                <%= variant.depth ? "#{variant.depth.to_i} mm" : "" %>
+              </small>
+            </td>
+          <% end %>
+        </tr> 
+        <tr>
+          <td><small><b>Price:</b></small></td>
+          <% @product.variants.each do |variant| %>
+          <td><small><b><%= variant.price ? number_to_currency(variant.price, :unit => '£') : "" %></b></small></td>
+          <% end %>
+        </tr>
       </tbody>
   
     </table>
