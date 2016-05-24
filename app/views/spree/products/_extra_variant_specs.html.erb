@@ -34,7 +34,28 @@
           </tr>
         
           <!-- Only display for winches -->
-          <% else %>  
+          <% else %>
+          
+          <tr>
+            <td><small><b>Lifting Capacity 1st Layer:</b></small></td>
+            <% @product.variants.each do |variant| %>
+            <td><small><%= variant.lifting_capacity_first_layer ? "#{variant.lifting_capacity_first_layer} Kg" : "" %><small></td>
+            <% end %>
+          </tr>
+
+          <tr>
+            <td><small><b>Lifting Capacity Last Layer:</b></small></td>
+            <% @product.variants.each do |variant| %>
+            <td><small><%= variant.lifting_capacity_last_layer ? "#{variant.lifting_capacity_last_layer} Kg" : "" %><small></td>
+            <% end %>
+          </tr>
+          
+          <tr>
+            <td><small><b>Haulage Capacity:</b></small></td>
+            <% @product.variants.each do |variant| %>
+              <td><small><%= variant.haulage_capacity ? "#{variant.haulage_capacity} Kg" : "" %><small></td>
+            <% end %>
+          </tr> 
         
           <tr>
             <td><small><b>Rope Capacity 1st Layer:</b></small></td>
